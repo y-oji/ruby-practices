@@ -43,5 +43,8 @@ print "   " * first_wday
   end
 end
 
+# 月末が土曜日でない場合に改行する
+puts unless last_day.wday == 6
+
 # 最後に改行を追加する
 puts
