@@ -34,8 +34,13 @@ print "   " * first_wday
 # 日付を月初から月末まで表示する
 (first_day..last_day).each do |day|
 
-  # 日付を3桁で表示する
-  print day.day.to_s.rjust(3, ' ')
+  # 日付を(2桁+空白)で表示する
+  # 日付が今日の場合、色を反転する
+  if day == today
+    print "\e[7m#{day.day.to_s.rjust(2)}\e[0m "
+  else
+    print "#{day.day.to_s.rjust(2)} "
+  end
 
   # 土曜日で改行する  
   if day.wday == 6
