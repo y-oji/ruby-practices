@@ -28,11 +28,11 @@ print "   " * first_wday
     print "#{day.day.to_s.rjust(2)} "
   end
 
-  if day.wday == 6
+  if day.saturday?
     puts
   end
 end
 
-puts unless last_day.wday == 6
+puts unless last_day.saturday?
 
 puts
