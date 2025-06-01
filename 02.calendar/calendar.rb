@@ -29,9 +29,7 @@ print "   " * first_wday
     print "#{everyday} "
   end
 
-  if day.saturday?
-    puts
-  end
+  puts if day.saturday?
 end
 
 puts unless last_day.saturday?
