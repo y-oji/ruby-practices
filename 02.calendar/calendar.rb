@@ -23,11 +23,7 @@ print "   " * first_wday
 
 (first_day..last_day).each do |day|
   everyday = day.day.to_s.rjust(2)
-  if day == today
-    print "\e[7m#{everyday}\e[0m "
-  else
-    print "#{everyday} "
-  end
+  print day == today ? "\e[7m#{everyday}\e[0m " : "#{everyday} "
 
   puts if day.saturday?
 end
