@@ -22,8 +22,8 @@ first_wday = first_day.wday
 print "   " * first_wday
 
 (first_day..last_day).each do |day|
-  everyday = day.day.to_s.rjust(2)
-  print day == today ? "\e[7m#{everyday}\e[0m " : "#{everyday} "
+  day_str = day.day.to_s.rjust(2)
+  print day == today ? "\e[7m#{day_str}\e[0m " : "#{day_str} "
 
   puts if day.saturday?
 end
