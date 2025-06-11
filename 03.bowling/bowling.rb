@@ -18,8 +18,7 @@ while i < shots.size && frames.size < 9
   end
 end
 
-frame10 = [shots[i], shots[i + 1]]
-frame10 << shots[i + 2] if shots[i + 2] && (frame10[0] == 10 || frame10[0].to_i + frame10[1].to_i == 10)
+frame10 = shots[i, 3]
 frames.push(frame10)
 
 point = 0
