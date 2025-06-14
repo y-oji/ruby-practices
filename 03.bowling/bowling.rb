@@ -26,19 +26,28 @@ point = 0
 frames.each_with_index do |frame, index|
   if index == 9
     point += frame.sum
-  elsif frame[0] == 10
+    next
+  end
+
+  if frame[0] == 10
     next_frame = frames[index + 1]
+
     if next_frame[0] == 10 && index + 2 < frames.size
       next_next_frame = frames[index + 2]
       point += 10 + 10 + next_next_frame[0]
-    else
-      point += 10 + next_frame[0] + next_frame[1]
+      next
     end
-  elsif frame.sum == 10
+
+    point += 10 + next_frame[0] + next_frame[1]
+    next
+  end
+
+  if frame.sum == 10
     next_frame = frames[index + 1]
     point += 10 + next_frame[0]
-  else
-    point += frame.sum
+    next
   end
+
+  point += frame.sum
 end
 puts point
