@@ -1,7 +1,8 @@
+#!/usr/bin/env ruby
 # frozen_string_literal: true
 
 def acquire_files
-  Dir.glob('*').sort
+  Dir.glob('*')
 end
 
 def acquire_max_length(files)
