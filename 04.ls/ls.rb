@@ -17,19 +17,19 @@ def create_array(files, columns)
 
   rows += 1 if (count % columns).positive?
 
-  array = []
-  rows.times { array << [] }
+  file_rows = []
+  rows.times { file_rows << [] }
 
   files.each_with_index do |file, index|
     row = index % rows
-    array[row] << file
+    file_rows[row] << file
   end
 
-  array
+  file_rows
 end
 
-def organize_file(array, column_length)
-  array.each do |row|
+def organize_file(file_rows, column_length)
+  file_rows.each do |row|
     row.each do |file|
       print file.ljust(column_length + 2)
     end
