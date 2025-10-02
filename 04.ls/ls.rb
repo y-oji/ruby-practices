@@ -44,4 +44,5 @@ def display_files(files, columns)
 end
 
 files = acquire_files
-display_files(files, 3)
+columns = 3
+display_files(files, columns)
