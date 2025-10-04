@@ -6,7 +6,7 @@ def acquire_files
 end
 
 def acquire_max_length(files)
-  max_length = files.map(&:length).max
+  files.max_by(&:length)&.length
 end
 
 def create_array(files, columns)
@@ -41,5 +41,5 @@ def display_files(files, columns)
 end
 
 files = acquire_files
-COLUMNS = 3
-display_files(files, COLUMNS)
+columns = 3
+display_files(files, columns)
