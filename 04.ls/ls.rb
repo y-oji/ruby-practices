@@ -6,9 +6,7 @@ def acquire_files
 end
 
 def acquire_max_length(files)
-  max_length = 0
-  files.each { |file| max_length = file.length if file.length > max_length }
-  max_length
+  files.max_by(&:length)&.length
 end
 
 def create_array(files, columns)
