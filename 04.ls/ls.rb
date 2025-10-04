@@ -8,13 +8,12 @@ def acquire_files
 end
 
 def acquire_max_length(files)
-  files.max_by(&:length)&.length
+  files.map(&:length).max
 end
 
 def create_array(files, columns)
   count = files.size
-  rows, remainder = count.divmod(columns)
-  rows += 1 if remainder.positive?
+  rows = count.ceildiv(columns)
 
   file_rows = []
   rows.times { file_rows << [] }
