@@ -13,9 +13,8 @@ end
 
 def create_array(files, columns)
   count = files.size
-  rows = count / columns
-
-  rows += 1 if (count % columns).positive?
+  rows, remainder = count.divmod(columns)
+  rows += 1 if remainder.positive?
 
   file_rows = []
   rows.times { file_rows << [] }
