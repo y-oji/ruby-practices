@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+COLUMNS = 3
+
 def acquire_files
   Dir.glob('*')
 end
@@ -41,5 +43,4 @@ def display_files(files, columns)
 end
 
 files = acquire_files
-columns = 3
-display_files(files, columns)
+display_files(files, COLUMNS)
