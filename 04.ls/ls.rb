@@ -1,10 +1,22 @@
-#!/usr/bin/env ruby
+# !/usr/bin/env ruby
 # frozen_string_literal: true
+
+require 'optparse'
 
 COLUMNS = 3
 
-def acquire_files
-  Dir.glob('*')
+options = { all: false }
+
+OptionParser.new do |opts|
+  opts.on('-a') { options[:all] = true }
+end.parse!
+
+def acquire_files(options)
+  if options[:all]
+    Dir.glob('*', File::FNM_DOTMATCH)
+  else
+    Dir.glob('*')
+  end
 end
 
 def acquire_max_length(files)
@@ -41,5 +53,5 @@ def display_files(files, columns)
   organize_file(rows, max_length)
 end
 
-files = acquire_files
+files = acquire_files(options)
 display_files(files, COLUMNS)
