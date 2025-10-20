@@ -12,11 +12,7 @@ OptionParser.new do |opts|
 end.parse!
 
 def acquire_files(options)
-  if options[:all]
-    Dir.glob('*', File::FNM_DOTMATCH)
-  else
-    Dir.glob('*')
-  end
+  Dir.glob('*', *(options[:all] ? [File::FNM_DOTMATCH] : []))
 end
 
 def acquire_max_length(files)
