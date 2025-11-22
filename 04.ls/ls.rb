@@ -5,14 +5,17 @@ require 'optparse'
 
 COLUMNS = 3
 
-options = { all: false }
+options = { all: false, reverse: false }
 
 OptionParser.new do |opts|
   opts.on('-a') { options[:all] = true }
+  opts.on('-r') { options[:reverse] = true }
 end.parse!
 
 def acquire_files(options)
-  Dir.glob('*', *(options[:all] ? [File::FNM_DOTMATCH] : []))
+  files = Dir.glob('*', *(options[:all] ? [File::FNM_DOTMATCH] : []))
+  files = files.reverse if options[:reverse]
+  files
 end
 
 def acquire_max_length(files)
