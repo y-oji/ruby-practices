@@ -13,7 +13,7 @@ OptionParser.new do |opts|
 end.parse!
 
 def acquire_files(options)
-  files = Dir.glob('*', *(options[:all] ? File::FNM_DOTMATCH : 0))
+  files = Dir.glob('*', options[:all] ? File::FNM_DOTMATCH : 0)
   files = files.reverse if options[:reverse]
   files
 end
