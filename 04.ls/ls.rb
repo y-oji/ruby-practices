@@ -38,12 +38,7 @@ PERMISSION_TABLE = {
 def permission_string(stat)
   mode = stat.mode.to_s(8)
   permission_number = mode[-3..]
-  permission = ''
-  permission_number.each_char do |number|
-    permission += PERMISSION_TABLE[number]
-  end
-
-  permission
+  permission_number.chars.map { |n| PERMISSION_TABLE[n] }.join
 end
 
 def put_long_format_in_one_line(file)
