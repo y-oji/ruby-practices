@@ -55,12 +55,7 @@ def put_long_format_in_one_line(file)
 end
 
 def display_long_format(files)
-  total_blocks = 0
-
-  files.each do |file|
-    stat = File.lstat(file)
-    total_blocks += stat.blocks
-  end
+  total_blocks = files.sum { |file| File.lstat(file).blocks }
 
   puts "total #{total_blocks}"
   files.each do |file|
